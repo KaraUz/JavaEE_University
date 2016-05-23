@@ -13,13 +13,13 @@ and open the template in the editor.
     <body>
         <h:form>
             <table>
-                <tr><td><h:outputText value="Vardas:" /></td><td><h:inputText  value="#{enrollController.student.firstName}" required="true"/></td></tr>
-                <tr><td><h:outputText value="Pavardė:" /></td><td><h:inputText value="#{enrollController.student.lastName}" required="true"/></td></tr>
-                <tr><td><h:outputText value="Registracijos numeris:"/></td><td><h:inputText value="#{enrollController.student.registrationNo}" required="true"/> </td></tr>
+                <tr><td><h:outputText value="Vardas:" /></td><td><h:inputText  value="#{courseController.student.firstName}" required="true"/></td></tr>
+                <tr><td><h:outputText value="Pavardė:" /></td><td><h:inputText value="#{courseController.student.lastName}" required="true"/></td></tr>
+                <tr><td><h:outputText value="Registracijos numeris:"/></td><td><h:inputText value="#{courseController.student.registrationNo}" required="true"/> </td></tr>
             </table>
-            <h:commandButton action="#{enrollController.createStudent()}" value="Toliau"/>
+            <h:commandButton action="#{courseController.createStudent()}" value="Toliau"/>
         </h:form>
         <br/>
-        Conversation id: #{enrollController.conversation.id}
+        Conversation id: #{courseController.conversation.id}
     </body>
 </html>

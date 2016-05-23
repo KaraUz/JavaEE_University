@@ -13,10 +13,10 @@ and open the template in the editor.
     <body>
         <h1>Išsaugoti</h1>
         <h:form>
-            <h:commandButton value="Išsaugoti" action="#{enrollController.confirm()}" />
-            <h:commandButton value="Atšaukti" action="#{enrollController.cancel()}" />
+            <h:commandButton value="Išsaugoti" action="#{courseController.confirm()}" />
+            <h:commandButton value="Atšaukti" action="#{courseController.cancel()}" />
         </h:form>
         <br/>
-        Conversation id: #{enrollController.conversation.id}
+        Conversation id: #{courseController.conversation.id}
     </body>
 </html>

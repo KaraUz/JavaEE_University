@@ -13,11 +13,11 @@ and open the template in the editor.
     <body>
         <h:form>
             <h:outputLabel value="Kurso pavadinimas:"/>
-            <h:inputText id="courseName" value="#{enrollController.course.name}" required="true"/>
+            <h:inputText id="courseName" value="#{courseController.course.name}" required="true"/>
             <br/>
-            <h:commandButton action="#{enrollController.createCourse()}" value="Toliau"/>      
+            <h:commandButton action="#{courseController.createCourse()}" value="Toliau"/>      
         </h:form>
         <br/>
-        Conversation id: #{enrollController.conversation.id}
+        Conversation id: #{courseController.conversation.id}
     </body>
 </html>

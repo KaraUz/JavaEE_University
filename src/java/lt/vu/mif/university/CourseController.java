@@ -28,7 +28,7 @@ import lt.vu.mif.university.services.StudentService;
 @Named
 @ConversationScoped
 @Stateful
-public class EnrollController {
+public class CourseController {
 
     String INDEX = "/index?faces-redirect=true";
     String REGISTER_STUDENT = "/conversation/registerStudent";
