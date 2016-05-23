@@ -5,6 +5,7 @@
  */
 package lt.vu.mif.university.services;
 
+import java.util.ArrayList;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -24,6 +25,7 @@ public class UniversityService {
     public University createUniversity(String universityTitle) {
         University uni = new University();
         uni.setTitle(universityTitle);
+        uni.setStudentList(new ArrayList<>());
         em.persist(uni);
         return uni;
     }

@@ -1,12 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h1>Pavyko!</h1>
-        #{resultController.retrieveUniversity()}
+        <h1>#{resultController.uni.title} universiteto studentai:</h1>
+        <h:dataTable var="student" value="#{resultController.uni.studentList}" border="1" cellspacing="10px" cellpadding="5px">
+            <h:column>
+                <f:facet name="header">Vardas</f:facet>
+                <h:outputText value="#{student.firstName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Pavardė</f:facet>
+                <h:outputText value="#{student.lastName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Registracijos numeris</f:facet>
+                <h:outputText value="#{student.registrationNo}"/>
+            </h:column>
+        </h:dataTable>
     </h:body>
 </html>

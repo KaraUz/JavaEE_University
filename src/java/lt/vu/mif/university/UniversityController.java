@@ -26,42 +26,42 @@ import lt.vu.mif.university.services.UniversityService;
  */
 @Named
 @RequestScoped
-@Stateful 
+@Stateful
 public class UniversityController {
+
     @PersistenceContext
     private EntityManager em;
-    @Inject 
+    @Inject
     private UniversityService universityService;
     @Inject
     private StudentService studentService;
-    
+
     private String universityTitle;
-    private List<Student> Students = new ArrayList<>();
+    private Student student;
 
     @PostConstruct
     public void init() {
-        Students.add(new Student());
-        Students.add(new Student());
-        Students.add(new Student());
+        student = new Student();
     }
-    
+
     public String prepareUniversity() {
-        if(universityTitle == null || universityTitle.isEmpty()) return "";
-        
+        if (universityTitle == null || universityTitle.isEmpty()) {
+            return "";
+        }
+
         em.isOpen(); // Initialize entity cache
         University uni = universityService.selectUniversity(universityTitle);
-        if(uni == null) universityService.createUniversity(universityTitle);// em gets propagated
-        for(Student stud:Students){
-            
-            if(stud.getRegistrationNo()==null || stud.getRegistrationNo().isEmpty() || studentService.selectStudent(stud.getRegistrationNo()) != null)continue;
-            System.out.println("regno:"+stud.getRegistrationNo());
-            stud.setUniversityId(uni);
-            studentService.createStudent(stud);
+
+        if (uni == null) {
+            uni = universityService.createUniversity(universityTitle);// em gets propagated
         }
+        student.setUniversityId(uni);
+        studentService.createStudent(student);
+        uni.getStudentList().add(student);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put("universityTitle", universityTitle);
         return "/result";
     }
-    
+
     public String getUniversityTitle() {
         return universityTitle;
     }
@@ -70,11 +70,11 @@ public class UniversityController {
         this.universityTitle = universityTitle;
     }
 
-    public List<Student> getStudents() {
-        return Students;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudents(List<Student> Students) {
-        this.Students = Students;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
