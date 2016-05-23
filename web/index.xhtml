@@ -2,22 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      >
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h1>Studento registracija į naują ar egzistuojantį universitetą</h1>
-        <h:form>
-            <table>
-                <tr><td><h:outputLabel value="Universiteto pavadinimas:"/></td><td><h:inputText id="universityTitle" value="#{universityController.universityTitle}" required="true"/></td></tr>
-                <tr><td><h:outputText value="Vardas:" /></td><td><h:inputText  value="#{universityController.student.firstName}" required="true"/></td></tr>
-                <tr><td><h:outputText value="Pavardė:" /></td><td><h:inputText value="#{universityController.student.lastName}" required="true"/></td></tr>
-                <tr><td><h:outputText value="Registracijos numeris:"/></td><td><h:inputText value="#{universityController.student.registrationNo}" required="true"/> </td></tr>
-            </table>
-            <br/>
-            <h:commandButton action="#{universityController.prepareUniversity()}" value="Saugoti"/>    
-        </h:form>
+        <h1>Universitetai</h1>
+        <a href="registerUniversity.html" >Užregistruokite universitetą</a>
+        <br/>
+        <a href="conversation/registerCourse.html" >Užregistruokite kursa</a>
     </h:body>
 </html>
 

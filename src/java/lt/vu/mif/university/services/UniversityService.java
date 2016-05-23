@@ -7,6 +7,9 @@ package lt.vu.mif.university.services;
 
 import java.util.ArrayList;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -16,6 +19,7 @@ import lt.vu.mif.university.entities.University;
  *
  * @author Karolis
  */
+@Named
 @Stateless
 public class UniversityService {
             

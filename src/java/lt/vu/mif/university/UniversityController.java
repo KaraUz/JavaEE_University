@@ -56,10 +56,10 @@ public class UniversityController {
             uni = universityService.createUniversity(universityTitle);// em gets propagated
         }
         student.setUniversityId(uni);
-        studentService.createStudent(student);
+        student = studentService.createStudent(student);
         uni.getStudentList().add(student);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put("universityTitle", universityTitle);
-        return "/result";
+        return "/result?faces-redirect=true";
     }
 
     public String getUniversityTitle() {

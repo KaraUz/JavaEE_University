@@ -5,7 +5,9 @@
  */
 package lt.vu.mif.university.services;
 
+import java.util.ArrayList;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -18,19 +20,26 @@ import lt.vu.mif.university.entities.University;
  *
  * @author Karolis
  */
+@Named
 @Stateless
 public class StudentService {
     
     @PersistenceContext(type= PersistenceContextType.TRANSACTION ,synchronization=SynchronizationType.UNSYNCHRONIZED)
     private EntityManager em;
     
-    public void createStudent(Student student) {
+    public Student createStudent(Student student) {
+        student.setCourseList(new ArrayList<>());
         em.persist(student);
+        return student;
     }
     
     public Student selectStudent(String reg){
         try{
-            return (Student)em.createNamedQuery("Student.findByRegistrationNo").setParameter("registrationNo", reg).getSingleResult();
+            Student stud = (Student)em.createNamedQuery("Student.findByRegistrationNo").setParameter("registrationNo", reg).getSingleResult();
+            if(stud.getCourseList() == null){
+                stud.setCourseList(new ArrayList<>());
+            }          
+            return stud;
         }catch(NoResultException e){
             return null;
         }
